@@ -157,43 +157,30 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-const writeToFile(fileName, data) {
-    return new Promise((resolve, reject) => {
-        fs.writeToFile('./generated-README.md', fileContent, err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            resolve({
-                ok: true,
-                message: 'File successfully created!'
-            });
-        });
-    });
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, error => {
+        if (error) {
+            return console.log('Sorry there was an error : ' + error);
+        }
+    })
 }
 
 // TODO: Create a function to initialize app
-function init() {
+async function init() {
+    try {
+        const userAnswers = await inquirer.prompt(questions);
+        console.log('Thank you! The current data is being processed into your README.md: ', userAnswers);
 
-    return inquirer.prompt(questions)
-        .then(readmeData => {
-            return readmeData;
-        })
-        .then(readmeData => {
-            console.log(readmeData);
-            return generateMarkdown(readmeData);
-        })
-        .then(pageMD => {
-            return writeFile(pageMD);
-        })
-        .then(writeFileResponse => {
-            console.log(writeFileResponse.message);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
+        const myMarkdown = generateMarkdown(userAnswers);
+        console.log(myMarkdown);
+
+        await createReadMe('README1.md', myMarkdown);
+
+    } catch (error) {
+        console.log('Sorry there was an error.' + error);
+    }
+};
+
 
 // Function call to initialize app
 init();
