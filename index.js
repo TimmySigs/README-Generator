@@ -1,8 +1,9 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const generateMarkdown = require('./generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 const util = require('util');
+const writeFileAsync = util.promisify(fs.writeFile)
 // TODO: Create an array of questions for user input
 function questions() {
     return inquirer.prompt([
@@ -187,9 +188,9 @@ function questions() {
 async function init() {
     try {
         const answers = await questions();
-        const generateContent = generateReadme(answers);
+        const generateContent = generateMarkdown(answers);
 
-        await writeFileAsync('./dist/README.md', generateContent);
+        await writeFileAsync('./dist/generatedREADME.md', generateContent);
         console.log('Readme successfully created')
     } catch (err) {
         console.log(err)
