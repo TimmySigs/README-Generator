@@ -17,7 +17,7 @@ function renderLicenseSection(license) { }
 // `;
 // }
 function generateMarkdown(answers) {
-  return ` ${answers.Title}
+  return ` ${answers.title}
 
   ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
 
@@ -38,7 +38,7 @@ function generateMarkdown(answers) {
    ${answers.installation}
 
   ## Usage
-   ${answers.usage}
+   ${answers.how}
 
   ## License
   ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
@@ -47,16 +47,16 @@ function generateMarkdown(answers) {
   This application is covered by the ${answers.license} license.
 
   ## Contributing
-   ${answers.contributing}
+   ${answers.contribute}
 
   ## Tests
-  - ${answers.tests}
+  - ${answers.test}
 
   ## Questions
    ${answers.questions}
 
   <br />
-  Find me on GitHub: [${answers.username}](https://github.com/${answers.username})<br />
+  Find me on GitHub: [${answers.githubUsername}](https://github.com/${answers.githubUsername})<br />
 
   <br />
   ✉️ Email me with any questions: ${answers.email}<br /><br />

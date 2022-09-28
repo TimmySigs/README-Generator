@@ -50,26 +50,13 @@ function questions() {
         },
         {
             type: 'input',
-            name: 'what',
-            message: 'What is your project and what problem will it solve? (Required)',
-            validate: whatInput => {
-                if (whatInput) {
+            name: 'description',
+            message: 'Describe the app (Required)',
+            validate: descriptionInput => {
+                if (descriptionInput) {
                     return true;
                 } else {
                     console.log('Please enter what your project is!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'why',
-            message: 'Why did you create this project? (Required)',
-            validate: whyInput => {
-                if (whyInput) {
-                    return true;
-                } else {
-                    console.log('Please enter why you created this project!');
                     return false;
                 }
             }
@@ -89,10 +76,10 @@ function questions() {
         },
         {
             type: 'input',
-            name: 'usage',
-            message: 'Please provide instructions and examples for use. (Required)',
-            validate: usageInput => {
-                if (usageInput) {
+            name: 'installation',
+            message: 'Please provide installation instructions. (Required)',
+            validate: instructionsInput => {
+                if (instructionsInput) {
                     return true;
                 } else {
                     console.log('Please enter your use instructions!');
