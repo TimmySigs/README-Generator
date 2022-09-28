@@ -1,8 +1,8 @@
 // TODO: Include packages needed for this application
-const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
+const inquirer = require('inquirer');
 const util = require('util');
+const generatedREADME = require('./utils/generateMarkdown');
 const writeFileAsync = util.promisify(fs.writeFile)
 // TODO: Create an array of questions for user input
 function questions() {
@@ -15,7 +15,8 @@ function questions() {
             validate: titleInput => {
                 if (titleInput) {
                     return true;
-                } else {
+                }
+                else {
                     console.log('Please enter your title!');
                     return false;
                 }
@@ -82,19 +83,6 @@ function questions() {
                     return true;
                 } else {
                     console.log('Please enter what your project is!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'installation',
-            message: 'Please provide step-by-step installation instructions for your project. (Required)',
-            validate: installInput => {
-                if (installInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your installation instructions!');
                     return false;
                 }
             }
@@ -188,10 +176,9 @@ function questions() {
 async function init() {
     try {
         const answers = await questions();
-        const generateContent = generateMarkdown(answers);
-
+        const generateContent = generatedREADME(answers);
         await writeFileAsync('./dist/generatedREADME.md', generateContent);
-        console.log('Readme successfully created')
+        console.log('Your professional README has been created!')
     } catch (err) {
         console.log(err)
     }
