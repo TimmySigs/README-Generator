@@ -108,6 +108,7 @@ function questions() {
                     return true;
                 } else {
                     return false;
+
                 }
             },
             validate: contributerInput => {
@@ -118,6 +119,11 @@ function questions() {
                     return false;
                 }
             }
+        },
+        {
+            type: 'input',
+            name: 'questions',
+            message: 'What should i do if i have an issue?',
         },
         {
             type: 'input',
@@ -133,6 +139,19 @@ function questions() {
             }
         }
     ]);
+}
+
+// TODO: Create a function to initialize app
+async function init() {
+    try {
+        const answers = await questions();
+        const generateContent = generatedREADME(answers);
+
+        await writeFileAsync('./dist/README.md', generateContent);
+        console.log('Readme successfully created')
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 // TODO: Create a function to write README file
@@ -160,15 +179,6 @@ function questions() {
 //     }
 // };
 
-async function init() {
-    try {
-        const answers = await questions();
-        const generateContent = generatedREADME(answers);
-        await writeFileAsync('./dist/generatedREADME.md', generateContent);
-        console.log('Your professional README has been created!')
-    } catch (err) {
-        console.log(err)
-    }
-}
+
 // Function call to initialize app
 init();
