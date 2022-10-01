@@ -30,6 +30,8 @@ You can access more badges and their purposes at [shields.io](https://shields.io
   
   All the responses are converted to markdown format and the fs.write package will create the README.md file automatically upon completing the prompts.
   
+  This is a video walkthorugh on how to use the app
+  [Walkthrough video](https://drive.google.com/file/d/1LOHQ_ZNtNzhUnchOhbaWgrrgFN7bhgLq/view)
   
   
       

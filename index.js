@@ -123,7 +123,7 @@ function questions() {
         {
             type: 'input',
             name: 'questions',
-            message: 'What should i do if i have an issue?',
+            message: 'What should I do if I have an issue?',
         },
         {
             type: 'input',
